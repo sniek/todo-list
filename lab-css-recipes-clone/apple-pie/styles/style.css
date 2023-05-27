@@ -1,0 +1,117 @@
+/* CSS RESET - do not remove */
+/* Reset default browser styles and provide a consistent starting point */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: lighter;
+}
+
+/*  Set the font */
+body {
+  font-family: "Helvetica", sans-serif;
+}
+
+/* STYLES */
+/* Write your CSS below */
+
+/* Title styles */
+.title {
+  width: 100%;
+  height: 800px;
+  position: relative;
+  background-image: url("https://github.com/ironhack-labs/lab-css-recipes-clone/blob/master/apple-pie/images/apple-pie.jpg?raw=true");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title h1{
+  color: white;
+  font-size: 6em;
+  text-align: center;
+  letter-spacing: 3px;
+}  
+
+/* Styles for the description section*/
+
+main {
+  width: 1200px;
+  margin: 0 auto;
+  font-size: 1.3em;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 50px 100px;
+  width: auto;
+  text-align: justify;
+}
+
+.description img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styles for the ingredients section */
+
+.ingredients {
+  width: auto;
+  margin: 50px 100px;
+}
+
+.ingredients ol{
+  list-style-type: none;
+}
+
+.ingredients ol li{
+  text-indent: 10px;
+}
+
+.ingredients ol li:before {
+  content: "- ";
+}
+
+/* Styles for the direction section */
+
+.directions {
+  width: auto;
+  margin: 50px 100px;
+}
+
+.directions ol {
+  list-style-type: none;
+  margin-left: 10px;
+}
+
+.directions ol li {
+  counter-increment: listcounter;
+}
+
+.directions ol li::before {
+  content: counter(listcounter) ")";
+}
+
+/* reusable css */
+
+.seperator {
+  border-bottom: 3px solid lightgrey;
+}
+
+#info {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
