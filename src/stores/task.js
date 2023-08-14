@@ -15,5 +15,28 @@ export const useTaskStore = defineStore("taskStore", () => {
     console.log("tasks: ", tasks.value);
   }
 
-  return { tasks, fetchTasks }
+  const createTask = async (id, userId, title) => {
+    const { error } = await supabase
+      .from('tasks')
+      .insert({
+        id: id,
+        user_id: userId,
+        title: title
+      })
+
+    if (error) console.log('Error: ', error);
+  }
+
+  const deleteTask = async (id) => {
+    const { error } = await supabase
+      .from('tasks')
+      .delete()
+      .eq('id', id)
+
+    if (error) console.log('Error: ', error);
+  }
+
+
+
+  return { tasks, fetchTasks, createTask, deleteTask }
 })
