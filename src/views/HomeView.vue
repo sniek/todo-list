@@ -1,15 +1,19 @@
 <script setup>
 import { useUserStore } from "@/stores/user";
 import { useTaskStore } from "@/stores/task";
-import { ref, watch } from 'vue';
-import TaskItem from '@/components/TaskItem.vue';
+import { onMounted, ref, watch } from 'vue';
+import SignIn from "@/components/SignIn.vue";
+import SignUp from '@/components/SignUp.vue'
+import Footer from "../components/Footer.vue";
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const userStore = useUserStore();
 const taskStore = useTaskStore();
 
 const email = ref("");
 const password = ref("");
-const title = ref("");
 
 const testing = () => {
   console.log("User: ", userStore.user);
@@ -18,75 +22,42 @@ const testing = () => {
   console.log(taskStore.tasks.pop().id);
 }
 
-watch(
+/* watch(
   () => userStore.user,
   () => {
     taskStore.fetchTasks();
   }
-)
+) */
+
+onMounted(() => {
+  taskStore.fetchTasks();
+})
 
 </script>
 
 <template>
-  <h1>Todo List</h1>
 
-  <section v-if="userStore.user">
-    <h2>Current User: {{ userStore.user.user.email }}</h2>
-    <button @click="userStore.signOutUser()">Sign Out</button>
-  </section>
+<div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="../assets/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+              <SignIn v-if="route.name == 'home'"
+                      :userStore="userStore"
+                      :taskStore="taskStore"/>
+              <SignUp v-if="route.name =='signUp'"
+                      :userStore="userStore"/>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
-  <br>
-  <section v-if="!userStore.user">
-    <h3>Sign In</h3>
-    <input placeholder="Your Email" v-model="email">
-    <input placeholder="Your Password" v-model="password">
-    <button @click="userStore.signInUser(email, password)">Sign In</button>
-  </section>
-  <br><br>
-
-  <section v-if="!userStore.user">
-    <h3>Sign Up</h3>
-    <input placeholder="Write your email" v-model="email">
-    <input placeholder="Write your password" v-model="password">
-    <button @click="userStore.createNewUser(email, password)">Create New User</button>
-  </section>
-
-
-  <br><br>
-
-
-  <section v-if="userStore.user">
-    <h3>Create New Task</h3>
-    <input placeholder="create a Task" v-model="title">
-    <button @click="taskStore.createTask(taskStore.tasks.pop().id + 1, userStore.user.user.id, title)">Create
-      Task</button>
-  </section>
-
-
-  <br><br>
-  <TaskItem :taskStore="taskStore"/>
- <!--    <button @click="taskStore.fetchTasks()">Fetch Tasks</button>
-  <ul>
-    <li v-for="task in taskStore.tasks">
-      {{ task.id }} - {{ task.title }} - {{ task.is_complete }}
-      <button 
-        v-if="task.is_complete == false" 
-        @click="taskStore.updateTask(task.id, true)"
-        >Done</button>
-
-        <button 
-        v-if="task.is_complete == true" 
-        @click="taskStore.updateTask(task.id, false)"
-        >Undo</button>
-
-      <button 
-        @click="taskStore.deleteTask(task.id)"
-        >Delete</button>
-    </li>
-  </ul> -->
-
-  <br><br>
-
-  <button @click="testing">TEST</button>
-  <button @click="userStore.signInUser('test@test.de', '123123')">Test User Sign in</button>
+<Footer></Footer>
 </template>
+
+<style></style>

@@ -1,30 +1,19 @@
 import { defineStore } from "pinia"
 import supabase from "../lib/supabase"
 import { ref } from "vue"
-import { getCurrentInstance } from 'vue';
 
 export const useTaskStore = defineStore("taskStore", () => {
   const tasks = ref([]);
-  const singleTask = ref();
 
   const fetchTasks = async () => {
     const { data, error } = await supabase
       .from('tasks')
       .select()
+      .order('id', {ascending: true})
 
     if (error) console.log("Error: ", error);
     else tasks.value = data;
     console.log("tasks: ", tasks.value);
-  }
-
-  const fetchSingleTask = async (id) => {
-    const { data, error } = await supabase
-      .from('tasks')
-      .select()
-      .eq(id, id)
-
-      if (error) console.log('Error: ', error);
-      else singleTask.value = data;
   }
 
   const createTask = async (id, userId, title) => {
@@ -37,7 +26,8 @@ export const useTaskStore = defineStore("taskStore", () => {
       })
 
     if (error) console.log('Error: ', error);
-
+    
+    console.log('Create: ', id);
     fetchTasks();
   }
 
@@ -52,10 +42,10 @@ export const useTaskStore = defineStore("taskStore", () => {
     fetchTasks();
   }
 
-  const updateTask = async (id, isComplete) => {
+  const updateTask = async (id, update) => {
     const { error } = await supabase
       .from('tasks')
-      .update({ is_complete: isComplete })
+      .update( update )
       .eq('id', id)
 
     if (error) console.log('Error: ', error);
@@ -63,23 +53,11 @@ export const useTaskStore = defineStore("taskStore", () => {
     fetchTasks();
   }
 
-  const updateTitle = async (id, title) => {
-    const { error } = await supabase
-      .from('tasks')
-      .update({ title: title })
-      .eq('id', id)
-
-    if (error) console.log('Error: ', error);
-
-    fetchTasks();
-  }
-
-  return { tasks, 
-    singleTask, 
+  return { 
+    tasks,
     fetchTasks, 
     createTask, 
     deleteTask, 
     updateTask, 
-    updateTitle, 
-    fetchSingleTask }
+  }
 })
