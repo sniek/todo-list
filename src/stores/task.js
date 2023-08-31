@@ -5,29 +5,36 @@ import { ref } from "vue"
 export const useTaskStore = defineStore("taskStore", () => {
   const tasks = ref([]);
 
+ /*  const getUniqueId = () => {
+    let uniqueId = 0;
+    for (let i = 0; i == tasks.value[i].id; i++){
+      uniqueId = i;
+    }
+    console.log('unique: ', uniqueId);
+    return uniqueId;
+  }
+ */
   const fetchTasks = async () => {
     const { data, error } = await supabase
       .from('tasks')
       .select()
-      .order('id', {ascending: true})
+      .order('is_complete', {ascending: true})
 
     if (error) console.log("Error: ", error);
     else tasks.value = data;
     console.log("tasks: ", tasks.value);
   }
 
-  const createTask = async (id, userId, title) => {
+  const createTask = async (userId, title) => {
     const { error } = await supabase
       .from('tasks')
       .insert({
-        id: id,
         user_id: userId,
         title: title
       })
 
     if (error) console.log('Error: ', error);
     
-    console.log('Create: ', id);
     fetchTasks();
   }
 

@@ -123,4 +123,8 @@ input[type="checkbox"] {
     vertical-align: middle;
     margin-right: 20px;
 }
+input:checked {
+    background-color: #01d28e !important;
+    border-color: #01d28e !important;
+}
 </style>

@@ -7,6 +7,7 @@ const props = defineProps({
 })
 
 const title = ref("");
+// taskStore.tasks.pop().id + 1, 
 </script>
 
 <template>
@@ -19,12 +20,12 @@ const title = ref("");
             aria-describedby="button-addon2"
             id="new-task"
             v-model="title" 
-            @keyup.enter="taskStore.createTask(taskStore.tasks.pop().id + 1, userStore.user.user.id, title); title = ''">
+            @keyup.enter="taskStore.createTask(userStore.user.user.id, title); title = ''">
         <button 
             class="btn btn-outline-secondary" 
             type="button" 
             id="button-addon2"  
-            @click="taskStore.createTask(taskStore.tasks.pop().id + 1, userStore.user.user.id, title); title = ''"
+            @click="taskStore.createTask(userStore.user.user.id, title); title = ''"
         >Add Task</button>
     </div>
 </template>
