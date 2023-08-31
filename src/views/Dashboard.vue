@@ -11,7 +11,7 @@ const userStore = useUserStore();
 const taskStore = useTaskStore();
 
 onMounted(() => {
-   taskStore.fetchTasks();
+    taskStore.fetchTasks();
 })
 
 
@@ -20,12 +20,13 @@ onMounted(() => {
 <template>
     <Navbar :userStore="userStore"></Navbar>
     <div class="content">
-    <div class="container">
-       <NewTask :taskStore="taskStore" :userStore="userStore" /> 
-       <TaskItem :taskStore="taskStore" />
+        <div class="container">
+            <NewTask    :taskStore="taskStore" 
+                        :userStore="userStore" />
+            <TaskItem   :taskStore="taskStore" />
+        </div>
     </div>
-  </div>
-<Footer></Footer>  
+    <Footer></Footer>
 </template>
 
 <style></style>

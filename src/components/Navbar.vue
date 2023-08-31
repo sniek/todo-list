@@ -5,17 +5,17 @@ const props = defineProps({
 </script>
 
 <template>
-    <nav class="navbar navbar-expand fixed-top justify-content-between align-items-center" data-bs-theme="dark" style="background-color: #6c63ff;">
-        <div class="container-fluid justify-content-between">
-            <div class="container-fluid">
+    <nav class="navbar navbar-expand fixed-top" data-bs-theme="dark" style="background-color: #6c63ff;">
+        <div class="column d-flex justify-content-between">
+            <div class="container-fluid flex-fill">
                 <span class="navbar-brand mb-0 h1">
                     <i class="bi bi-ui-checks" style="font-size: 40px;"></i>
                     Simple ToDo
                 </span>
             </div>
-            <div class="container-fluid">
+            <div class="container-fluid collapse navbar-collapse">
                 <span class="navbar-text mb-0 h3" v-if="userStore.user">
-                    Hello {{ userStore.user.user.email }}
+                    <i class="bi bi-person-circle"></i> {{ userStore.user.user.email }}
                 </span>
             </div>
             <span class="text-center"></span>

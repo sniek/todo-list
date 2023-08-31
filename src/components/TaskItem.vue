@@ -8,11 +8,18 @@ const props = defineProps({
 let edit = ref(false);
 let editValue = ref();
 let storeId = ref();
+let checked = ref();
 
 const editToggle = (taskId, taskTitle) => {
     edit.value = !edit.value;
     editValue.value = taskTitle;
     storeId.value = taskId;
+}
+
+const checkboxToggle = (taskId, checked) => {
+    storeId.value = taskId;
+    if (checked == false) props.taskStore.updateTask(taskId, {is_complete: true});
+    else props.taskStore.updateTask(taskId, {is_complete: false}); 
 }
 
 onMounted(() => {
@@ -48,8 +55,11 @@ onMounted(() => {
   </div>
   <ul class="list-group list-group-flush">
     <li v-for="task in taskStore.tasks" :key="task.id"  class="list-group-item">
+        <span v-if="!task.is_complete"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @change="checkboxToggle(task.id, task.is_complete)">
+            {{ task.title }}</span> 
 
-        <span><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">{{ task.id }} - {{ task.title }} - {{ task.is_complete }}</span> 
+            <span class="completed" v-if="task.is_complete"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @change="checkboxToggle(task.id, task.is_complete)" checked> 
+            {{ task.title }}</span> 
         
         <div class="btn-group d-grid d-md-flex float-sm-end" id="list-btn">
                 <button 
@@ -58,7 +68,7 @@ onMounted(() => {
                 type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editModal"
             ><i class="bi bi-pencil-fill"></i></button>
 
-            <button 
+<!--             <button 
                 type="button" class="btn btn-outline-success btn-small"
                 v-if="task.is_complete == false" 
                 @click="taskStore.updateTask(task.id, {is_complete: true})"
@@ -68,7 +78,7 @@ onMounted(() => {
                 type="button" class="btn btn-outline-primary btn-small"
                 v-if="task.is_complete == true" 
                 @click="taskStore.updateTask(task.id, {is_complete: false})"
-            ><i class="bi bi-arrow-counterclockwise"></i></button>
+            ><i class="bi bi-arrow-counterclockwise"></i></button> -->
 
             <button 
                 type="button" class="btn btn-outline-danger btn-small"
@@ -103,5 +113,14 @@ li:hover #list-btn button {
 
 #editModal .modal-footer #modal-btn{
     background-color: #6c63ff;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+input[type="checkbox"] {
+    vertical-align: middle;
+    margin-right: 20px;
 }
 </style>

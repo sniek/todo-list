@@ -15,13 +15,6 @@ const taskStore = useTaskStore();
 const email = ref("");
 const password = ref("");
 
-const testing = () => {
-  console.log("User: ", userStore.user);
-  console.log('Tasks: ', taskStore.tasks);
-  console.log(taskStore.tasks.length);
-  console.log(taskStore.tasks.pop().id);
-}
-
 /* watch(
   () => userStore.user,
   () => {
@@ -36,10 +29,9 @@ onMounted(() => {
 </script>
 
 <template>
-
 <div class="content">
     <div class="container">
-      <div class="row">
+      <div class="row d-flex justify-content-center">
         <div class="col-md-6">
           <img src="../assets/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
         </div>
@@ -52,7 +44,6 @@ onMounted(() => {
                       :userStore="userStore"/>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
