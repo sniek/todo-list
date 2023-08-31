@@ -31,7 +31,6 @@ const password = ref("");
                 <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required>
 
             </div>
-            <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">
             <RouterLink :to="{ name: 'dashboard' }">
                 <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">
             </RouterLink>
