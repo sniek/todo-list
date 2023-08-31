@@ -1,29 +1,11 @@
 # todo-list
 
-This template should help get you started developing with Vue 3 in Vite.
+This project tought me how to create app with vue.js and how to use it with Supabase.
 
-## Recommended IDE Setup
+Features of my Todo App:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+- Create a new user, sign in and out
+- create, edit, delete, complete/uncomplete tasks
+- tasks are ordered by completed-state (first it lists all uncompleted tasks and below the completed)
+- hover effect on each tasks for the edit and delete button to reduce clutter and make it look "cleaner"
+- tasks can be completed by clicking on the corresponding checkbox to the left of the task
