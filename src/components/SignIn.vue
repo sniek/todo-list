@@ -24,14 +24,14 @@ const password = ref("");
         </div>
         <form>
             <div class="form-group first">
-                <input type="email" class="form-control" id="email" placeholder="Email" v-model="email">
+                <input type="email" class="form-control" id="email" placeholder="Email" v-model="email" required>
 
             </div>
             <div class="form-group last mb-4">
-                <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
+                <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required>
 
             </div>
-
+            <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">
             <RouterLink :to="{ name: 'dashboard' }">
                 <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">
             </RouterLink>
