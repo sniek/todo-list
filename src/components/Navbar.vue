@@ -8,7 +8,7 @@ const props = defineProps({
     <nav class="navbar" data-bs-theme="dark">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">
-                <i class="bi bi-ui-checks" style="font-size: 40px;"></i>
+                <i class="bi bi-ui-checks" style="font-size: 50px;"></i>
                 Simple ToDo
             </span>
             <span class="navbar-text mb-0 h5" v-if="userStore.user">
@@ -31,6 +31,7 @@ nav {
 
 #sign-out {
     color: white;
+    font-size: 22px;
 }
 
 #sign-out:hover {
