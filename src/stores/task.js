@@ -5,15 +5,6 @@ import { ref } from "vue"
 export const useTaskStore = defineStore("taskStore", () => {
   const tasks = ref([]);
 
- /*  const getUniqueId = () => {
-    let uniqueId = 0;
-    for (let i = 0; i == tasks.value[i].id; i++){
-      uniqueId = i;
-    }
-    console.log('unique: ', uniqueId);
-    return uniqueId;
-  }
- */
   const fetchTasks = async () => {
     const { data, error } = await supabase
       .from('tasks')

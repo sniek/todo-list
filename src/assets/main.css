@@ -110,7 +110,7 @@ body {
   
   .content a {
     color: #888;
-    text-decoration: underline; }
+    text-decoration: none; }
   
   .content .forgot-pass {
     position: relative;

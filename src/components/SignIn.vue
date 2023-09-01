@@ -1,14 +1,17 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const props = defineProps({
     userStore: Object,
     taskStore: Object
 })
 
-const logInUser = async () => {
+const logInUser = async () => {   
     await props.userStore.signInUser(email.value, password.value)
-    props.taskStore.fetchTasks();
+    props.taskStore.fetchTasks();   
 }
 
 const email = ref("");
@@ -20,7 +23,7 @@ const password = ref("");
     <div class="col-md-8">
         <div class="mb-4">
             <h3>Sign In</h3>
-            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            <p class="mb-4">Sign in and enjoy the simple solution to todo lists. Create, Edit, Delete Tasks. Nothing more, nothing less.</p>
         </div>
         <form>
             <div class="form-group first">
@@ -31,8 +34,9 @@ const password = ref("");
                 <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required>
 
             </div>
+            
             <RouterLink :to="{ name: 'dashboard' }">
-                <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">
+              <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">  
             </RouterLink>
 
             <span class="d-block text-left my-4 text-muted text-center">&mdash; Not a Member?
@@ -60,10 +64,16 @@ input::placeholder {
     padding-left: 30px;
     padding-right: 30px;
 }
+#sign-up-button:hover {
+    background-color: #847dff;
+    border-color: #847dff;
+}
 
 #sign-up {
     color: #6c63ff;
-    text-decoration: none;
     font-weight: bold;
+}
+#sign-up:hover {
+    color: #847dff;
 }
 </style>

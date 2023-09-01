@@ -8,7 +8,6 @@ const props = defineProps({
 let edit = ref(false);
 let editValue = ref();
 let storeId = ref();
-let checked = ref();
 
 const editToggle = (taskId, taskTitle) => {
     edit.value = !edit.value;
@@ -67,18 +66,6 @@ onMounted(() => {
                 @click="editToggle(task.id, task.title)"
                 type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#editModal"
             ><i class="bi bi-pencil-fill"></i></button>
-
-<!--             <button 
-                type="button" class="btn btn-outline-success btn-small"
-                v-if="task.is_complete == false" 
-                @click="taskStore.updateTask(task.id, {is_complete: true})"
-            ><i class="bi bi-check-lg"></i></button>
-
-            <button 
-                type="button" class="btn btn-outline-primary btn-small"
-                v-if="task.is_complete == true" 
-                @click="taskStore.updateTask(task.id, {is_complete: false})"
-            ><i class="bi bi-arrow-counterclockwise"></i></button> -->
 
             <button 
                 type="button" class="btn btn-outline-danger btn-small"

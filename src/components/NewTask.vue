@@ -7,7 +7,6 @@ const props = defineProps({
 })
 
 const title = ref("");
-// taskStore.tasks.pop().id + 1, 
 </script>
 
 <template>

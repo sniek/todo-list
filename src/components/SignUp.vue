@@ -11,17 +11,10 @@ console.log();
 </script>
 
 <template>
-<!--   <section v-if="!userStore.user">
-    <h3>Sign Up</h3>
-    <input placeholder="Write your email" v-model="email">
-    <input placeholder="Write your password" v-model="password">
-    <button @click="userStore.createNewUser(email, password)">Create New User</button>
-  </section> -->
-
   <div class="col-md-8">
         <div class="mb-4">
             <h3>Sign Up</h3>
-            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            <p class="mb-4">Sign up and enjoy the simple solution to todo lists. Create, Edit, Delete Tasks. Nothing more, nothing less.</p>
         </div>
         <form>
             <div class="form-group first">

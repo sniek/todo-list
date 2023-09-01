@@ -15,13 +15,6 @@ const taskStore = useTaskStore();
 const email = ref("");
 const password = ref("");
 
-/* watch(
-  () => userStore.user,
-  () => {
-    taskStore.fetchTasks();
-  }
-) */
-
 onMounted(() => {
   taskStore.fetchTasks();
 })
@@ -30,6 +23,7 @@ onMounted(() => {
 
 <template>
 <div class="content">
+  <h1 class="text-center" id="headline"><i class="bi bi-ui-checks"></i> Simple ToDo</h1>
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-md-6">
@@ -51,4 +45,10 @@ onMounted(() => {
 <Footer></Footer>
 </template>
 
-<style></style>
+<style>
+#headline {
+  margin-bottom: 80px;
+  font-size: 80px;
+  color: rgb(55, 53, 76);
+}
+</style>
