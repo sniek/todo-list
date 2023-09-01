@@ -14,7 +14,7 @@ console.log();
   <div class="col-md-8">
         <div class="mb-4">
             <h3>Sign Up</h3>
-            <p class="mb-4">Sign up and enjoy the simple solution to todo lists. Create, Edit, Delete Tasks. Nothing more, nothing less.</p>
+            <p class="mb-4">Stay on top of life with this simple ToDo app. Create, edit and delete tasks with ease.</p>
         </div>
         <form>
             <div class="form-group first">
