@@ -97,7 +97,7 @@ onMounted(() => {
       <button class="btn btn-danger" @click="deleteToggle()">No</button>
     </span>
     
-    <button v-if="!deleteTasks" class="btn btn-outline-danger" @click="deleteToggle()">Delete Completed Tasks</button>
+    <button v-if="!deleteTasks" class="btn btn-outline-secondary" @click="deleteToggle()">Delete Completed Tasks</button>
 </div>
 </template>
 

@@ -11,7 +11,7 @@ const props = defineProps({
                 <i class="bi bi-ui-checks" style="font-size: 40px;"></i>
                 Simple ToDo
             </span>
-            <span class="navbar-text mb-0 h4" v-if="userStore.user">
+            <span class="navbar-text mb-0 h5" v-if="userStore.user">
                 <i class="bi bi-person-circle"></i> {{ userStore.user.user.email }}
             </span>
             <RouterLink :to="{ name: 'home' }">
