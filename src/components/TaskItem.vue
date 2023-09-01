@@ -8,6 +8,7 @@ const props = defineProps({
 let edit = ref(false);
 let editValue = ref();
 let storeId = ref();
+let deleteTasks = ref(false);
 
 const editToggle = (taskId, taskTitle) => {
     edit.value = !edit.value;
@@ -15,10 +16,21 @@ const editToggle = (taskId, taskTitle) => {
     storeId.value = taskId;
 }
 
+const deleteToggle = () => {
+  deleteTasks.value = !deleteTasks.value;
+}
+
 const checkboxToggle = (taskId, checked) => {
     storeId.value = taskId;
     if (checked == false) props.taskStore.updateTask(taskId, {is_complete: true});
     else props.taskStore.updateTask(taskId, {is_complete: false}); 
+}
+
+const deleteCompletedTasks = () => {
+  props.taskStore.tasks.forEach(task => {
+    if(task.is_complete) props.taskStore.deleteTask(task.id)
+  });
+  deleteToggle();
 }
 
 onMounted(() => {
@@ -75,6 +87,17 @@ onMounted(() => {
             
     </li>
   </ul>
+  
+</div>
+
+<div class="container d-flex justify-content-end" id="delete-complete-task-button">
+    <span v-if="deleteTasks">
+      Are you sure?
+      <button class="btn btn-success" @click="deleteCompletedTasks()">Yes</button>
+      <button class="btn btn-danger" @click="deleteToggle()">No</button>
+    </span>
+    
+    <button v-if="!deleteTasks" class="btn btn-outline-danger" @click="deleteToggle()">Delete Completed Tasks</button>
 </div>
 </template>
 
@@ -113,5 +136,9 @@ input[type="checkbox"] {
 input:checked {
     background-color: #01d28e !important;
     border-color: #01d28e !important;
+}
+#delete-complete-task-button {
+  margin-top: 20px;
+  padding: 0;
 }
 </style>
