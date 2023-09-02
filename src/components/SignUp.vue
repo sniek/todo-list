@@ -38,10 +38,8 @@ const handleSubmit = () => {
                 <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required>
 
             </div>
-<input type="submit" value="Sign Up" class="btn btn-block btn-primary" id="sign-up-button">
-            <RouterLink :to="{ name: 'dashboard' }">
-                
-            </RouterLink>
+            
+            <input type="submit" value="Sign Up" class="btn btn-block btn-primary" id="sign-up-button">
 
             <span class="d-block text-left my-4 text-muted text-center">&mdash; Already a Member?
                 <RouterLink :to="{ name: 'home' }">
