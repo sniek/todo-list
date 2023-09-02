@@ -11,7 +11,12 @@ const props = defineProps({
 
 const logInUser = async () => {   
     await props.userStore.signInUser(email.value, password.value)
+    router.push('/dashboard')
     props.taskStore.fetchTasks();   
+}
+
+const handleSubmit = () => {
+    logInUser()
 }
 
 const email = ref("");
@@ -25,7 +30,7 @@ const password = ref("");
             <h3>Sign In</h3>
             <p class="mb-4">Stay on top of life with this Simple ToDo app. Create, edit and delete tasks with ease.</p>
         </div>
-        <form>
+        <form @submit.prevent="handleSubmit">
             <div class="form-group first">
                 <input type="email" class="form-control" id="email" placeholder="Email" v-model="email" required>
 
@@ -34,9 +39,9 @@ const password = ref("");
                 <input type="password" class="form-control" id="password" placeholder="Password" v-model="password" required>
 
             </div>
-            
+            <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" >  
             <RouterLink :to="{ name: 'dashboard' }">
-              <input type="submit" value="Log In" class="btn btn-block btn-primary" id="sign-up-button" @click="logInUser()">  
+              
             </RouterLink>
 
             <span class="d-block text-left my-4 text-muted text-center">&mdash; Not a Member?
